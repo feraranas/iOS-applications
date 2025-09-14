@@ -31,7 +31,13 @@ struct AddLinkView: View {
             TerminalBackground()
             
             NavigationView {
-                VStack(alignment: .leading, spacing: 20) {
+                VStack(alignment: .leading, spacing: 24) {
+                    Text("$ add-link")
+                        .font(.custom("Monaco", size: 16))
+                        .fontWeight(.bold)
+                        .foregroundColor(.green)
+                        .padding(.bottom, 10)
+                    
                     Text("$ add-link")
                         .font(.custom("Monaco", size: 16))
                         .fontWeight(.bold)
@@ -118,11 +124,11 @@ struct AddLinkView: View {
         let trimmedDescription = description.trimmingCharacters(in: .whitespacesAndNewlines)
         
         // Basic URL validation
-        if !isValidURL(trimmedURL) {
-            alertMessage = "Please enter a valid URL"
-            showingAlert = true
-            return
-        }
+        //if !isValidURL(trimmedURL) {
+        //    alertMessage = "Please enter a valid URL"
+        //    showingAlert = true
+        //    return
+        //}
         
         linkStore.addLink(
             url: trimmedURL,
@@ -134,12 +140,12 @@ struct AddLinkView: View {
         onDismiss()
     }
     
-    private func isValidURL(_ string: String) -> Bool {
-        if let url = URL(string: string) {
-            return url.scheme != nil && url.host != nil
-        }
-        return false
-    }
+    //private func isValidURL(_ string: String) -> Bool {
+    //    if let url = URL(string: string) {
+    //        return url.scheme != nil && url.host != nil
+    //    }
+    //    return false
+    //}
 }
 
 #Preview {

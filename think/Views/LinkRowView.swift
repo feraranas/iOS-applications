@@ -12,6 +12,7 @@ import Inject
 
 struct LinkRowView: View {
     let link: Link
+    @State private var isHoveringFavorite = false
     
     #if DEBUG
     @ObserveInjection var inject
@@ -49,6 +50,28 @@ struct LinkRowView: View {
                 }
                 
                 Spacer()
+                
+                // Star/Favorite Button
+                Button(action: {
+                    // TODO: Add favorite functionality
+                }) {
+                    Image(systemName: link.isFavorite ? "star.fill": "star")
+                        .foregroundColor(.green)
+                        .font(.custom("Monaco", size: 14))
+                }
+                .accessibilityLabel("Toggle favorite status")
+                .opacity(0.8)
+                .buttonStyle(.plain)
+                .padding(EdgeInsets(top: 0.0, leading: 0.0, bottom: 0.0, trailing: 8.0))
+                .opacity(isHoveringFavorite ? 0.8 : 1.0)
+                .onHover(perform: { hovering in
+                    self.isHoveringFavorite = hovering
+                    if hovering {
+                        NSCursor.pointingHand.set()
+                    } else {
+                        NSCursor.arrow.set()
+                    }
+                })
                 
                 VStack(alignment: .trailing, spacing: 4) {
                     Text("[\(link.category)]")
@@ -97,7 +120,8 @@ struct LinkRowView: View {
         url: "https://www.apple.com",
         name: "Apple",
         category: "Technology",
-        description: "Apple's official website with products and services"
+        description: "Apple's official website with products and services",
+        isFavorite: true
     ))
     .padding()
 }

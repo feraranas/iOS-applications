@@ -14,13 +14,15 @@ struct Link: Identifiable, Codable {
     let name: String
     let category: String
     let description: String
+    var isFavorite: Bool
     
-    init(url: String, name: String, category: String, description: String) {
+    init(url: String, name: String, category: String, description: String, isFavorite: Bool = false) {
         self.id = UUID()
         self.date = Date()
         self.url = url
         self.name = name
         self.category = category
         self.description = description
+        self.isFavorite = isFavorite
     }
 }

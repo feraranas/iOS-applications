@@ -111,75 +111,73 @@ struct ContentView: View {
             VStack(spacing: 20) {
                 // Terminal header
                 HStack {
-                    Text("$ link-manager")
-                        .font(.custom("Monaco", size: 16))
+                    // Add Link Button
+                    Button(action: {
+                        saveLink()
+                    }) {
+                        VStack(spacing: 4) {
+                            Text("[ADD LINK]")
+                                .font(.custom("Monaco", size: 12))
+                                .fontWeight(.bold)
+                        }
                         .foregroundColor(.green)
-                        .fontWeight(.bold)
-                    Spacer()
-                    Text("◉ ◉ ◉")
-                        .font(.custom("Monaco", size: 12))
-                        .foregroundColor(.green)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 8)
+                    }
+                    .terminalButton(isPressed: isAddButtonPressed)
+                    .disabled(!isValidInput)
+                    .opacity(isValidInput ? 1.0 : 0.6)
+                    .onLongPressGesture(minimumDuration: 0, maximumDistance: .infinity, pressing: { pressing in
+                        withAnimation(.easeInOut(duration: 0.1)) {
+                            isAddButtonPressed = pressing
+                        }
+                    }, perform: {})
+        
                 }
                 .padding(.horizontal)
                 
                 // Add Link Form Section
                 VStack(alignment: .leading, spacing: 20) {
+                    // First row: URL and Name
                     HStack(alignment: .center, spacing: 16) {
                         Text("> URL:")
                             .font(.custom("Monaco", size: 14))
                             .foregroundColor(.green)
                         TextField("", text: $url)
                             .textFieldStyle(ModernTextFieldStyle())
-                            .frame(maxWidth: 200)
+                            .frame(maxWidth: 250)
                         
                         Text("> NAME:")
                             .font(.custom("Monaco", size: 14))
                             .foregroundColor(.green)
                         TextField("", text: $name)
                             .textFieldStyle(ModernTextFieldStyle())
-                            .frame(maxWidth: 150)
+                            .frame(maxWidth: 200)
                         
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                    
+                    // Second row: Category and Description
+                    HStack(alignment: .center, spacing: 16) {
                         Text("> CATEGORY:")
                             .font(.custom("Monaco", size: 14))
                             .foregroundColor(.green)
                         TextField("", text: $category)
                             .textFieldStyle(ModernTextFieldStyle())
-                            .frame(maxWidth: 120)
+                            .frame(maxWidth: 200)
                         
                         Text("> DESCRIPTION:")
                             .font(.custom("Monaco", size: 14))
                             .foregroundColor(.green)
                         TextField("", text: $description)
                             .textFieldStyle(ModernTextFieldStyle())
-                            .frame(maxWidth: 150)
-                        
-                        Button(action: {
-                            saveLink()
-                        }) {
-                            VStack(spacing: 2) {
-                                Text("[ADD]")
-                                    .font(.custom("Monaco", size: 12))
-                                    .fontWeight(.bold)
-                                Text("LINK")
-                                    .font(.custom("Monaco", size: 10))
-                            }
-                            .foregroundColor(.green)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 6)
-                            .frame(maxWidth: 150, maxHeight: 150)
-                        }
-                        .terminalButton(isPressed: isAddButtonPressed)
-                        .disabled(!isValidInput)
-                        .opacity(isValidInput ? 1.0 : 0.6)
-                        .onLongPressGesture(minimumDuration: 0, maximumDistance: .infinity, pressing: { pressing in
-                            withAnimation(.easeInOut(duration: 0.1)) {
-                                isAddButtonPressed = pressing
-                            }
-                        }, perform: {})
+                            .frame(maxWidth: 250)
                         
                         Spacer()
                     }
-                    .padding()
+                    .padding(.horizontal)
+                    
                 }
                 .frame(maxWidth: .infinity)
                 .terminalCard()
