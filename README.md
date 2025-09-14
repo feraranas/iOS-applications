@@ -1,1 +1,1 @@
-<img src='./app'>
+<img src='/app.png'>
