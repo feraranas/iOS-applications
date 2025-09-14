@@ -6,9 +6,17 @@
 //
 
 import SwiftUI
+#if DEBUG
+import Inject
+#endif
 
 struct LinkRowView: View {
     let link: Link
+    @State private var isHoveringFavorite = false
+    
+    #if DEBUG
+    @ObserveInjection var inject
+    #endif
     
     private var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -21,61 +29,89 @@ struct LinkRowView: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(link.name)
-                        .font(.title2)
-                        .foregroundColor(.primary)
-                        .lineLimit(1)
+                    HStack {
+                        Text(">> ")
+                            .font(.custom("Monaco", size: 14))
+                            .foregroundColor(.green)
+                        Text(link.name)
+                            .font(.custom("Monaco", size: 14))
+                            .foregroundColor(.green)
+                            .fontWeight(.bold)
+                            .lineLimit(1)
+                    }
                     
-                    Text(link.url)
-                        .font(.body)
-                        .foregroundColor(.blue)
-                        .lineLimit(1)
+                    HStack {
+                        Text("   ")
+                        Text(link.url)
+                            .font(.custom("Monaco", size: 12))
+                            .foregroundColor(.green.opacity(0.8))
+                            .lineLimit(1)
+                    }
                 }
                 
                 Spacer()
                 
+                // Star/Favorite Button
+                Button(action: {
+                    // TODO: Add favorite functionality
+                }) {
+                    Image(systemName: link.isFavorite ? "star.fill": "star")
+                        .foregroundColor(.green)
+                        .font(.custom("Monaco", size: 14))
+                }
+                .accessibilityLabel("Toggle favorite status")
+                .opacity(0.8)
+                .buttonStyle(.plain)
+                .padding(EdgeInsets(top: 0.0, leading: 0.0, bottom: 0.0, trailing: 8.0))
+                .opacity(isHoveringFavorite ? 0.8 : 1.0)
+                .onHover(perform: { hovering in
+                    self.isHoveringFavorite = hovering
+                    if hovering {
+                        NSCursor.pointingHand.set()
+                    } else {
+                        NSCursor.arrow.set()
+                    }
+                })
+                
                 VStack(alignment: .trailing, spacing: 4) {
-                    Text(link.category)
-                        .font(.callout)
+                    Text("[\(link.category)]")
+                        .font(.custom("Monaco", size: 12))
                         .fontWeight(.medium)
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 4)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 2)
                         .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .fill(.thinMaterial)
-                                .opacity(0.8)
-                        )
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(
-                                    LinearGradient(
-                                        gradient: Gradient(colors: [
-                                            Color.blue.opacity(0.6),
-                                            Color.purple.opacity(0.3)
-                                        ]),
-                                        startPoint: .topLeading,
-                                        endPoint: .bottomTrailing
-                                    ),
-                                    lineWidth: 1
+                            Rectangle()
+                                .fill(Color.black)
+                                .overlay(
+                                    Rectangle()
+                                        .stroke(Color.green, lineWidth: 1)
                                 )
                         )
-                        .foregroundColor(.blue)
+                        .foregroundColor(.green)
                     
                     Text(dateFormatter.string(from: link.date))
-                        .font(.caption)
-                        .foregroundColor(.secondary)
+                        .font(.custom("Monaco", size: 10))
+                        .foregroundColor(.green.opacity(0.6))
                 }
             }
             
             if !link.description.isEmpty {
-                Text(link.description)
-                    .font(.callout)
-                    .foregroundColor(.secondary)
-                    .lineLimit(2)
+                HStack {
+                    Text("   # ")
+                        .font(.custom("Monaco", size: 12))
+                        .foregroundColor(.green.opacity(0.7))
+                    Text(link.description)
+                        .font(.custom("Monaco", size: 12))
+                        .foregroundColor(.green.opacity(0.7))
+                        .lineLimit(2)
+                }
             }
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 12)
+        #if DEBUG
+        .enableInjection()
+        #endif
     }
 }
 
@@ -84,7 +120,8 @@ struct LinkRowView: View {
         url: "https://www.apple.com",
         name: "Apple",
         category: "Technology",
-        description: "Apple's official website with products and services"
+        description: "Apple's official website with products and services",
+        isFavorite: true
     ))
     .padding()
 }

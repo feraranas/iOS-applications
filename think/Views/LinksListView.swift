@@ -6,15 +6,22 @@
 //
 
 import SwiftUI
+#if DEBUG
+import Inject
+#endif
 
 struct LinksListView: View {
     @ObservedObject var linkStore: LinkStore
     @State private var showingAddLink = false
     
+    #if DEBUG
+    @ObserveInjection var inject
+    #endif
+    
     var body: some View {
         ZStack {
-            // Liquid glass background
-            LiquidGlassBackground()
+            // Terminal background
+            TerminalBackground()
             
             NavigationView {
                 if showingAddLink {
@@ -25,16 +32,19 @@ struct LinksListView: View {
                     VStack {
                         if linkStore.filteredLinks.isEmpty {
                             VStack(spacing: 16) {
-                                Image(systemName: "link")
-                                    .font(.system(size: 48))
-                                    .foregroundColor(.secondary)
-                                Text("No Links")
-                                    .font(.title2)
-                                    .fontWeight(.medium)
-                                    .foregroundColor(.primary)
-                                Text(linkStore.searchText.isEmpty ? "Add your first link to get started" : "No links match your search")
-                                    .font(.body)
-                                    .foregroundColor(.secondary)
+                                Text("┌─────────────────┐")
+                                    .font(.custom("Monaco", size: 16))
+                                    .foregroundColor(.green)
+                                Text("│   NO_LINKS_FOUND   │")
+                                    .font(.custom("Monaco", size: 16))
+                                    .foregroundColor(.green)
+                                    .fontWeight(.bold)
+                                Text("└─────────────────┘")
+                                    .font(.custom("Monaco", size: 16))
+                                    .foregroundColor(.green)
+                                Text(linkStore.searchText.isEmpty ? "# Execute add-link command" : "# No matches for search query")
+                                    .font(.custom("Monaco", size: 12))
+                                    .foregroundColor(.green.opacity(0.7))
                                     .multilineTextAlignment(.center)
                             }
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -43,14 +53,14 @@ struct LinksListView: View {
                                 LazyVStack(spacing: 12) {
                                     ForEach(linkStore.filteredLinks) { link in
                                         LinkRowView(link: link)
-                                            .glassCard(cornerRadius: 12, opacity: 0.1)
+                                            .terminalCard()
                                             .onTapGesture {
                                                 if let url = URL(string: link.url) {
                                                     NSWorkspace.shared.open(url)
                                                 }
                                             }
                                             .contextMenu {
-                                                Button("Delete", role: .destructive) {
+                                                Button("rm -rf link", role: .destructive) {
                                                     linkStore.deleteLink(link)
                                                 }
                                             }
@@ -74,6 +84,9 @@ struct LinksListView: View {
                 }
             }
         }
+        #if DEBUG
+        .enableInjection()
+        #endif
     }
 }
 

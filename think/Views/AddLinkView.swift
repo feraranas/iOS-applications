@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+#if DEBUG
+import Inject
+#endif
 
 struct AddLinkView: View {
     @ObservedObject var linkStore: LinkStore
@@ -18,50 +21,60 @@ struct AddLinkView: View {
     @State private var showingAlert = false
     @State private var alertMessage = ""
     
+    #if DEBUG
+    @ObserveInjection var inject
+    #endif
+    
     var body: some View {
         ZStack {
-            // Liquid glass background
-            LiquidGlassBackground()
+            // Terminal background
+            TerminalBackground()
             
             NavigationView {
-                VStack(alignment: .leading, spacing: 20) {
-                    Text("Link Details")
-                        .font(.title2)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.primary)
+                VStack(alignment: .leading, spacing: 24) {
+                    Text("$ add-link")
+                        .font(.custom("Monaco", size: 16))
+                        .fontWeight(.bold)
+                        .foregroundColor(.green)
+                        .padding(.bottom, 10)
+                    
+                    Text("$ add-link")
+                        .font(.custom("Monaco", size: 16))
+                        .fontWeight(.bold)
+                        .foregroundColor(.green)
                         .padding(.bottom, 10)
                     
                     VStack(alignment: .leading, spacing: 16) {
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("URL")
-                                .font(.headline)
-                                .foregroundColor(.primary)
-                            TextField("Enter URL", text: $url)
-                                .textFieldStyle(GlassTextFieldStyle())
+                            Text("> URL:")
+                                .font(.custom("Monaco", size: 14))
+                                .foregroundColor(.green)
+                            TextField("", text: $url)
+                                .textFieldStyle(ModernTextFieldStyle())
                         }
                         
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("Name")
-                                .font(.headline)
-                                .foregroundColor(.primary)
-                            TextField("Enter link name", text: $name)
-                                .textFieldStyle(GlassTextFieldStyle())
+                            Text("> NAME:")
+                                .font(.custom("Monaco", size: 14))
+                                .foregroundColor(.green)
+                            TextField("", text: $name)
+                                .textFieldStyle(ModernTextFieldStyle())
                         }
                         
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("Category")
-                                .font(.headline)
-                                .foregroundColor(.primary)
-                            TextField("Enter category", text: $category)
-                                .textFieldStyle(GlassTextFieldStyle())
+                            Text("> CATEGORY:")
+                                .font(.custom("Monaco", size: 14))
+                                .foregroundColor(.green)
+                            TextField("", text: $category)
+                                .textFieldStyle(ModernTextFieldStyle())
                         }
                         
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("Description")
-                                .font(.headline)
-                                .foregroundColor(.primary)
-                            TextField("Enter description", text: $description, axis: .vertical)
-                                .textFieldStyle(GlassTextFieldStyle())
+                            Text("> DESCRIPTION:")
+                                .font(.custom("Monaco", size: 14))
+                                .foregroundColor(.green)
+                            TextField("", text: $description, axis: .vertical)
+                                .textFieldStyle(ModernTextFieldStyle())
                                 .lineLimit(3...6)
                         }
                         
@@ -69,7 +82,7 @@ struct AddLinkView: View {
                     }
                     .padding()
                 }
-                .glassCard(cornerRadius: 20, opacity: 0.15)
+                .terminalCard()
                 .padding()
                 .navigationTitle("Add Link")
                 .toolbar {
@@ -93,29 +106,30 @@ struct AddLinkView: View {
                 }
             }
         }
+        #if DEBUG
+        .enableInjection()
+        #endif
     }
     
     private var isValidInput: Bool {
-        !url.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
         !name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
         !category.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
     
     private func saveLink() {
-        let trimmedURL = url.trimmingCharacters(in: .whitespacesAndNewlines)
         let trimmedName = name.trimmingCharacters(in: .whitespacesAndNewlines)
         let trimmedCategory = category.trimmingCharacters(in: .whitespacesAndNewlines)
         let trimmedDescription = description.trimmingCharacters(in: .whitespacesAndNewlines)
         
         // Basic URL validation
-        if !isValidURL(trimmedURL) {
-            alertMessage = "Please enter a valid URL"
-            showingAlert = true
-            return
-        }
+        //if !isValidURL(trimmedURL) {
+        //    alertMessage = "Please enter a valid URL"
+        //    showingAlert = true
+        //    return
+        //}
         
         linkStore.addLink(
-            url: trimmedURL,
+            url: url,
             name: trimmedName,
             category: trimmedCategory,
             description: trimmedDescription
@@ -124,12 +138,12 @@ struct AddLinkView: View {
         onDismiss()
     }
     
-    private func isValidURL(_ string: String) -> Bool {
-        if let url = URL(string: string) {
-            return url.scheme != nil && url.host != nil
-        }
-        return false
-    }
+    //private func isValidURL(_ string: String) -> Bool {
+    //    if let url = URL(string: string) {
+    //        return url.scheme != nil && url.host != nil
+    //    }
+    //    return false
+    //}
 }
 
 #Preview {
