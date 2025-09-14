@@ -19,6 +19,7 @@
 		889A8C7D2E765A3D00E220D8 /* thinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A8C7C2E765A3D00E220D8 /* thinkTests.swift */; };
 		889A8C872E765A3D00E220D8 /* thinkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A8C862E765A3D00E220D8 /* thinkUITests.swift */; };
 		889A8C892E765A3D00E220D8 /* thinkUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A8C882E765A3D00E220D8 /* thinkUITestsLaunchTests.swift */; };
+		A1B2C3D4E5F6789A00000001 /* Inject in Frameworks */ = {isa = PBXBuildFile; productRef = A1B2C3D4E5F6789A00000000 /* Inject */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1B2C3D4E5F6789A00000001 /* Inject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +186,9 @@
 			dependencies = (
 			);
 			name = think;
+			packageProductDependencies = (
+				A1B2C3D4E5F6789A00000000 /* Inject */,
+			);
 			productName = think;
 			productReference = 889A8C672E765A3A00E220D8 /* think.app */;
 			productType = "com.apple.product-type.application";
@@ -256,6 +261,9 @@
 				Base,
 			);
 			mainGroup = 889A8C5E2E765A3A00E220D8;
+			packageReferences = (
+				A1B2C3D4E5F6789A00000002 /* XCRemoteSwiftPackageReference "Inject" */,
+			);
 			productRefGroup = 889A8C682E765A3A00E220D8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -625,6 +633,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A1B2C3D4E5F6789A00000002 /* XCRemoteSwiftPackageReference "Inject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krzysztofzablocki/Inject.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A1B2C3D4E5F6789A00000000 /* Inject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A1B2C3D4E5F6789A00000002 /* XCRemoteSwiftPackageReference "Inject" */;
+			productName = Inject;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 889A8C5F2E765A3A00E220D8 /* Project object */;
 }
