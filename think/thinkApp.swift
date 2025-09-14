@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+#if DEBUG
+import Inject
+#endif
 
 @main
 struct thinkApp: App {

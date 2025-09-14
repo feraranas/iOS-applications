@@ -1,0 +1,630 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		692CF1B00C1A45FEAFB642DA /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D5B97E7E6243C2996ABFD9 /* Link.swift */; };
+		7F7BDA3D602B428AB0CBBDB4 /* LinkStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0A170F21964D98BCEE84ED /* LinkStore.swift */; };
+		1795977983904844B6029213 /* AddLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C662EE853464924A8D991EE /* AddLinkView.swift */; };
+		F7F3C8CA26F34B4296AC89B7 /* LinkRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069004C9B8CF4B628BA0F93F /* LinkRowView.swift */; };
+		9885F887EBEA4A6F9A40C9CF /* LinksListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED34B1622164F60A6FD88DA /* LinksListView.swift */; };
+		889A8C6B2E765A3A00E220D8 /* thinkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A8C6A2E765A3A00E220D8 /* thinkApp.swift */; };
+		889A8C6D2E765A3A00E220D8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A8C6C2E765A3A00E220D8 /* ContentView.swift */; };
+		889A8C6F2E765A3D00E220D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 889A8C6E2E765A3D00E220D8 /* Assets.xcassets */; };
+		889A8C722E765A3D00E220D8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 889A8C712E765A3D00E220D8 /* Preview Assets.xcassets */; };
+		889A8C7D2E765A3D00E220D8 /* thinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A8C7C2E765A3D00E220D8 /* thinkTests.swift */; };
+		889A8C872E765A3D00E220D8 /* thinkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A8C862E765A3D00E220D8 /* thinkUITests.swift */; };
+		889A8C892E765A3D00E220D8 /* thinkUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A8C882E765A3D00E220D8 /* thinkUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		889A8C792E765A3D00E220D8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 889A8C5F2E765A3A00E220D8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 889A8C662E765A3A00E220D8;
+			remoteInfo = think;
+		};
+		889A8C832E765A3D00E220D8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 889A8C5F2E765A3A00E220D8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 889A8C662E765A3A00E220D8;
+			remoteInfo = think;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		889A8C672E765A3A00E220D8 /* think.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = think.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		889A8C6A2E765A3A00E220D8 /* thinkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thinkApp.swift; sourceTree = "<group>"; };
+		889A8C6C2E765A3A00E220D8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		889A8C6E2E765A3D00E220D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		889A8C712E765A3D00E220D8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		889A8C732E765A3D00E220D8 /* think.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = think.entitlements; sourceTree = "<group>"; };
+		889A8C782E765A3D00E220D8 /* thinkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = thinkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		889A8C7C2E765A3D00E220D8 /* thinkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thinkTests.swift; sourceTree = "<group>"; };
+		889A8C822E765A3D00E220D8 /* thinkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = thinkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		889A8C862E765A3D00E220D8 /* thinkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thinkUITests.swift; sourceTree = "<group>"; };
+		889A8C882E765A3D00E220D8 /* thinkUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thinkUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		72D5B97E7E6243C2996ABFD9 /* Link.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
+		EB0A170F21964D98BCEE84ED /* LinkStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkStore.swift; sourceTree = "<group>"; };
+		0C662EE853464924A8D991EE /* AddLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLinkView.swift; sourceTree = "<group>"; };
+		069004C9B8CF4B628BA0F93F /* LinkRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkRowView.swift; sourceTree = "<group>"; };
+		4ED34B1622164F60A6FD88DA /* LinksListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksListView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		889A8C642E765A3A00E220D8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		889A8C752E765A3D00E220D8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		889A8C7F2E765A3D00E220D8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		889A8C5E2E765A3A00E220D8 = {
+			isa = PBXGroup;
+			children = (
+				889A8C692E765A3A00E220D8 /* think */,
+				889A8C7B2E765A3D00E220D8 /* thinkTests */,
+				889A8C852E765A3D00E220D8 /* thinkUITests */,
+				889A8C682E765A3A00E220D8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		889A8C682E765A3A00E220D8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				889A8C672E765A3A00E220D8 /* think.app */,
+				889A8C782E765A3D00E220D8 /* thinkTests.xctest */,
+				889A8C822E765A3D00E220D8 /* thinkUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		889A8C692E765A3A00E220D8 /* think */ = {
+			isa = PBXGroup;
+			children = (
+				88FACFA22E76696B00A928D0 /* ViewModels */,
+				88FACFA12E76696B00A928D0 /* Views */,
+				88FACF9F2E76694700A928D0 /* Models */,
+				889A8C6A2E765A3A00E220D8 /* thinkApp.swift */,
+				889A8C6C2E765A3A00E220D8 /* ContentView.swift */,
+				889A8C6E2E765A3D00E220D8 /* Assets.xcassets */,
+				889A8C732E765A3D00E220D8 /* think.entitlements */,
+				889A8C702E765A3D00E220D8 /* Preview Content */,
+			);
+			path = think;
+			sourceTree = "<group>";
+		};
+		889A8C702E765A3D00E220D8 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				889A8C712E765A3D00E220D8 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		889A8C7B2E765A3D00E220D8 /* thinkTests */ = {
+			isa = PBXGroup;
+			children = (
+				889A8C7C2E765A3D00E220D8 /* thinkTests.swift */,
+			);
+			path = thinkTests;
+			sourceTree = "<group>";
+		};
+		889A8C852E765A3D00E220D8 /* thinkUITests */ = {
+			isa = PBXGroup;
+			children = (
+				889A8C862E765A3D00E220D8 /* thinkUITests.swift */,
+				889A8C882E765A3D00E220D8 /* thinkUITestsLaunchTests.swift */,
+			);
+			path = thinkUITests;
+			sourceTree = "<group>";
+		};
+		88FACF9F2E76694700A928D0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				72D5B97E7E6243C2996ABFD9 /* Link.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		88FACFA12E76696B00A928D0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0C662EE853464924A8D991EE /* AddLinkView.swift */,
+				069004C9B8CF4B628BA0F93F /* LinkRowView.swift */,
+				4ED34B1622164F60A6FD88DA /* LinksListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		88FACFA22E76696B00A928D0 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				EB0A170F21964D98BCEE84ED /* LinkStore.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		889A8C662E765A3A00E220D8 /* think */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 889A8C8C2E765A3D00E220D8 /* Build configuration list for PBXNativeTarget "think" */;
+			buildPhases = (
+				889A8C632E765A3A00E220D8 /* Sources */,
+				889A8C642E765A3A00E220D8 /* Frameworks */,
+				889A8C652E765A3A00E220D8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = think;
+			productName = think;
+			productReference = 889A8C672E765A3A00E220D8 /* think.app */;
+			productType = "com.apple.product-type.application";
+		};
+		889A8C772E765A3D00E220D8 /* thinkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 889A8C8F2E765A3D00E220D8 /* Build configuration list for PBXNativeTarget "thinkTests" */;
+			buildPhases = (
+				889A8C742E765A3D00E220D8 /* Sources */,
+				889A8C752E765A3D00E220D8 /* Frameworks */,
+				889A8C762E765A3D00E220D8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				889A8C7A2E765A3D00E220D8 /* PBXTargetDependency */,
+			);
+			name = thinkTests;
+			productName = thinkTests;
+			productReference = 889A8C782E765A3D00E220D8 /* thinkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		889A8C812E765A3D00E220D8 /* thinkUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 889A8C922E765A3D00E220D8 /* Build configuration list for PBXNativeTarget "thinkUITests" */;
+			buildPhases = (
+				889A8C7E2E765A3D00E220D8 /* Sources */,
+				889A8C7F2E765A3D00E220D8 /* Frameworks */,
+				889A8C802E765A3D00E220D8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				889A8C842E765A3D00E220D8 /* PBXTargetDependency */,
+			);
+			name = thinkUITests;
+			productName = thinkUITests;
+			productReference = 889A8C822E765A3D00E220D8 /* thinkUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		889A8C5F2E765A3A00E220D8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					889A8C662E765A3A00E220D8 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					889A8C772E765A3D00E220D8 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 889A8C662E765A3A00E220D8;
+					};
+					889A8C812E765A3D00E220D8 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 889A8C662E765A3A00E220D8;
+					};
+				};
+			};
+			buildConfigurationList = 889A8C622E765A3A00E220D8 /* Build configuration list for PBXProject "think" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 889A8C5E2E765A3A00E220D8;
+			productRefGroup = 889A8C682E765A3A00E220D8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				889A8C662E765A3A00E220D8 /* think */,
+				889A8C772E765A3D00E220D8 /* thinkTests */,
+				889A8C812E765A3D00E220D8 /* thinkUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		889A8C652E765A3A00E220D8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				889A8C722E765A3D00E220D8 /* Preview Assets.xcassets in Resources */,
+				889A8C6F2E765A3D00E220D8 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		889A8C762E765A3D00E220D8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		889A8C802E765A3D00E220D8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		889A8C632E765A3A00E220D8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				692CF1B00C1A45FEAFB642DA /* Link.swift in Sources */,
+				7F7BDA3D602B428AB0CBBDB4 /* LinkStore.swift in Sources */,
+				1795977983904844B6029213 /* AddLinkView.swift in Sources */,
+				F7F3C8CA26F34B4296AC89B7 /* LinkRowView.swift in Sources */,
+				9885F887EBEA4A6F9A40C9CF /* LinksListView.swift in Sources */,
+				889A8C6D2E765A3A00E220D8 /* ContentView.swift in Sources */,
+				889A8C6B2E765A3A00E220D8 /* thinkApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		889A8C742E765A3D00E220D8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				889A8C7D2E765A3D00E220D8 /* thinkTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		889A8C7E2E765A3D00E220D8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				889A8C872E765A3D00E220D8 /* thinkUITests.swift in Sources */,
+				889A8C892E765A3D00E220D8 /* thinkUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		889A8C7A2E765A3D00E220D8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 889A8C662E765A3A00E220D8 /* think */;
+			targetProxy = 889A8C792E765A3D00E220D8 /* PBXContainerItemProxy */;
+		};
+		889A8C842E765A3D00E220D8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 889A8C662E765A3A00E220D8 /* think */;
+			targetProxy = 889A8C832E765A3D00E220D8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		889A8C8A2E765A3D00E220D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		889A8C8B2E765A3D00E220D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		889A8C8D2E765A3D00E220D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = think/think.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"think/Preview Content\"";
+				DEVELOPMENT_TEAM = 6K626SX9CV;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = md.think.think;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		889A8C8E2E765A3D00E220D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = think/think.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"think/Preview Content\"";
+				DEVELOPMENT_TEAM = 6K626SX9CV;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = md.think.think;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		889A8C902E765A3D00E220D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6K626SX9CV;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = md.think.thinkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/think.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/think";
+			};
+			name = Debug;
+		};
+		889A8C912E765A3D00E220D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6K626SX9CV;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = md.think.thinkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/think.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/think";
+			};
+			name = Release;
+		};
+		889A8C932E765A3D00E220D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6K626SX9CV;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = md.think.thinkUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = think;
+			};
+			name = Debug;
+		};
+		889A8C942E765A3D00E220D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6K626SX9CV;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = md.think.thinkUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = think;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		889A8C622E765A3A00E220D8 /* Build configuration list for PBXProject "think" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				889A8C8A2E765A3D00E220D8 /* Debug */,
+				889A8C8B2E765A3D00E220D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		889A8C8C2E765A3D00E220D8 /* Build configuration list for PBXNativeTarget "think" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				889A8C8D2E765A3D00E220D8 /* Debug */,
+				889A8C8E2E765A3D00E220D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		889A8C8F2E765A3D00E220D8 /* Build configuration list for PBXNativeTarget "thinkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				889A8C902E765A3D00E220D8 /* Debug */,
+				889A8C912E765A3D00E220D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		889A8C922E765A3D00E220D8 /* Build configuration list for PBXNativeTarget "thinkUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				889A8C932E765A3D00E220D8 /* Debug */,
+				889A8C942E765A3D00E220D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 889A8C5F2E765A3A00E220D8 /* Project object */;
+}

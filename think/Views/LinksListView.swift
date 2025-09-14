@@ -6,10 +6,17 @@
 //
 
 import SwiftUI
+#if DEBUG
+import Inject
+#endif
 
 struct LinksListView: View {
     @ObservedObject var linkStore: LinkStore
     @State private var showingAddLink = false
+    
+    #if DEBUG
+    @ObserveInjection var inject
+    #endif
     
     var body: some View {
         ZStack {
@@ -74,6 +81,9 @@ struct LinksListView: View {
                 }
             }
         }
+        #if DEBUG
+        .enableInjection()
+        #endif
     }
 }
 

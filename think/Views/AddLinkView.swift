@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+#if DEBUG
+import Inject
+#endif
 
 struct AddLinkView: View {
     @ObservedObject var linkStore: LinkStore
@@ -17,6 +20,10 @@ struct AddLinkView: View {
     @State private var description: String = ""
     @State private var showingAlert = false
     @State private var alertMessage = ""
+    
+    #if DEBUG
+    @ObserveInjection var inject
+    #endif
     
     var body: some View {
         ZStack {
@@ -93,6 +100,9 @@ struct AddLinkView: View {
                 }
             }
         }
+        #if DEBUG
+        .enableInjection()
+        #endif
     }
     
     private var isValidInput: Bool {

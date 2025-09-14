@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+#if DEBUG
+import Inject
+#endif
 
 // MARK: - Liquid Glass Components
 struct LiquidGlassBackground: View {
@@ -184,28 +187,11 @@ struct GlassButton: ViewModifier {
 struct GlassTextFieldStyle: TextFieldStyle {
     func _body(configuration: TextField<Self._Label>) -> some View {
         configuration
-            .padding(.horizontal, 16)
-            .padding(.vertical, 12)
-            .background(
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(.thinMaterial)
-                    .opacity(0.6)
+            .padding(5)
+            .overlay(
+                RoundedRectangle(cornerRadius: 7)
+                    .stroke(.secondary.opacity(0.5), lineWidth: 1)
             )
-            .background(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(
-                        LinearGradient(
-                            gradient: Gradient(colors: [
-                                Color.white.opacity(0.4),
-                                Color.white.opacity(0.1)
-                            ]),
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        ),
-                        lineWidth: 1
-                    )
-            )
-            .shadow(color: Color.black.opacity(0.05), radius: 5, x: 0, y: 2)
     }
 }
 
@@ -228,6 +214,10 @@ struct ContentView: View {
     @State private var showingAlert = false
     @State private var alertMessage = ""
     @State private var isAddButtonPressed = false
+    
+    #if DEBUG
+    @ObserveInjection var inject
+    #endif
     
     var body: some View {
         ZStack {
@@ -358,6 +348,9 @@ struct ContentView: View {
         } message: {
             Text(alertMessage)
         }
+        #if DEBUG
+        .enableInjection()
+        #endif
     }
     
     private var isValidInput: Bool {

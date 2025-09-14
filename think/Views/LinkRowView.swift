@@ -6,9 +6,16 @@
 //
 
 import SwiftUI
+#if DEBUG
+import Inject
+#endif
 
 struct LinkRowView: View {
     let link: Link
+    
+    #if DEBUG
+    @ObserveInjection var inject
+    #endif
     
     private var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -76,6 +83,9 @@ struct LinkRowView: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 12)
+        #if DEBUG
+        .enableInjection()
+        #endif
     }
 }
 
