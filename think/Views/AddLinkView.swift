@@ -112,13 +112,11 @@ struct AddLinkView: View {
     }
     
     private var isValidInput: Bool {
-        !url.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
         !name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
         !category.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
     
     private func saveLink() {
-        let trimmedURL = url.trimmingCharacters(in: .whitespacesAndNewlines)
         let trimmedName = name.trimmingCharacters(in: .whitespacesAndNewlines)
         let trimmedCategory = category.trimmingCharacters(in: .whitespacesAndNewlines)
         let trimmedDescription = description.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -131,7 +129,7 @@ struct AddLinkView: View {
         //}
         
         linkStore.addLink(
-            url: trimmedURL,
+            url: url,
             name: trimmedName,
             category: trimmedCategory,
             description: trimmedDescription

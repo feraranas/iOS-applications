@@ -263,13 +263,6 @@ private func saveLink() {
         let trimmedCategory = category.trimmingCharacters(in: .whitespacesAndNewlines)
         let trimmedDescription = description.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        // Basic URL validation
-        if !isValidURL(trimmedURL) {
-            alertMessage = "Please enter a valid URL"
-            showingAlert = true
-            return
-        }
-        
         linkStore.addLink(
             url: trimmedURL,
             name: trimmedName,
@@ -288,12 +281,6 @@ private func saveLink() {
         description = ""
     }
     
-    private func isValidURL(_ string: String) -> Bool {
-        if let url = URL(string: string) {
-            return url.scheme != nil && url.host != nil
-        }
-        return false
-    }
 }
 
 #Preview {
