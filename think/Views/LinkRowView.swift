@@ -22,12 +22,12 @@ struct LinkRowView: View {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(link.name)
-                        .font(.headline)
+                        .font(.title2)
                         .foregroundColor(.primary)
                         .lineLimit(1)
                     
                     Text(link.url)
-                        .font(.caption)
+                        .font(.body)
                         .foregroundColor(.blue)
                         .lineLimit(1)
                 }
@@ -36,7 +36,7 @@ struct LinkRowView: View {
                 
                 VStack(alignment: .trailing, spacing: 4) {
                     Text(link.category)
-                        .font(.caption)
+                        .font(.callout)
                         .fontWeight(.medium)
                         .padding(.horizontal, 10)
                         .padding(.vertical, 4)
@@ -62,14 +62,14 @@ struct LinkRowView: View {
                         .foregroundColor(.blue)
                     
                     Text(dateFormatter.string(from: link.date))
-                        .font(.caption2)
+                        .font(.caption)
                         .foregroundColor(.secondary)
                 }
             }
             
             if !link.description.isEmpty {
                 Text(link.description)
-                    .font(.caption)
+                    .font(.callout)
                     .foregroundColor(.secondary)
                     .lineLimit(2)
             }

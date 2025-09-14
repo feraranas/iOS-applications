@@ -234,19 +234,13 @@ struct ContentView: View {
             // Liquid glass background
             LiquidGlassBackground()
             
-            HSplitView {
+            VStack(spacing: 20) {
                 // Add Link Form Section
                 VStack(alignment: .leading, spacing: 20) {
-                    Text("Add New Link")
-                        .font(.title2)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.primary)
-                        .padding(.bottom, 10)
-                    
                     VStack(alignment: .leading, spacing: 16) {
                         VStack(alignment: .leading, spacing: 8) {
                             Text("URL")
-                                .font(.headline)
+                                .font(.title3)
                                 .foregroundColor(.primary)
                             TextField("Enter URL", text: $url)
                                 .textFieldStyle(GlassTextFieldStyle())
@@ -254,7 +248,7 @@ struct ContentView: View {
                         
                         VStack(alignment: .leading, spacing: 8) {
                             Text("Name")
-                                .font(.headline)
+                                .font(.title3)
                                 .foregroundColor(.primary)
                             TextField("Enter link name", text: $name)
                                 .textFieldStyle(GlassTextFieldStyle())
@@ -262,7 +256,7 @@ struct ContentView: View {
                         
                         VStack(alignment: .leading, spacing: 8) {
                             Text("Category")
-                                .font(.headline)
+                                .font(.title3)
                                 .foregroundColor(.primary)
                             TextField("Enter category", text: $category)
                                 .textFieldStyle(GlassTextFieldStyle())
@@ -270,7 +264,7 @@ struct ContentView: View {
                         
                         VStack(alignment: .leading, spacing: 8) {
                             Text("Description")
-                                .font(.headline)
+                                .font(.title3)
                                 .foregroundColor(.primary)
                             TextField("Enter description", text: $description, axis: .vertical)
                                 .textFieldStyle(GlassTextFieldStyle())
@@ -283,6 +277,7 @@ struct ContentView: View {
                             HStack {
                                 Image(systemName: "plus.circle.fill")
                                 Text("Add Link")
+                                    .font(.title3)
                                     .fontWeight(.semibold)
                             }
                             .foregroundColor(.white)
@@ -304,7 +299,7 @@ struct ContentView: View {
                 }
                 .frame(minWidth: 300, maxWidth: 400)
                 .glassCard(cornerRadius: 20, opacity: 0.15)
-            
+                
                 // Links List Section
                 VStack(alignment: .leading, spacing: 0) {
                     HStack {
@@ -322,11 +317,11 @@ struct ContentView: View {
                                 .font(.system(size: 48))
                                 .foregroundColor(.secondary)
                             Text("No Links")
-                                .font(.title2)
+                                .font(.title)
                                 .fontWeight(.medium)
                                 .foregroundColor(.primary)
                             Text(linkStore.searchText.isEmpty ? "Add your first link using the form on the left" : "No links match your search")
-                                .font(.body)
+                                .font(.title3)
                                 .foregroundColor(.secondary)
                                 .multilineTextAlignment(.center)
                         }
