@@ -10,109 +10,82 @@ import SwiftUI
 import Inject
 #endif
 
-// MARK: - Liquid Glass Components
-struct LiquidGlassBackground: View {
-    @State private var animate = false
-    
+// MARK: - Terminal Components
+struct TerminalBackground: View {
     var body: some View {
-        ZStack {
-            // Base gradient background
-            LinearGradient(
-                gradient: Gradient(colors: [
-                    Color.blue.opacity(0.6),
-                    Color.purple.opacity(0.4),
-                    Color.pink.opacity(0.3),
-                    Color.orange.opacity(0.2)
-                ]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
+        Color.black
             .ignoresSafeArea()
-            
-            // Animated liquid blobs
-            
-        }
-        .onAppear {
-            animate = true
-        }
     }
 }
 
-struct GlassCard: ViewModifier {
-    var cornerRadius: CGFloat = 16
-    var opacity: Double = 0.1
-    
+struct TerminalCard: ViewModifier {
     func body(content: Content) -> some View {
         content
             .background(
-                RoundedRectangle(cornerRadius: cornerRadius)
-                    .fill(.ultraThinMaterial)
-                    .opacity(opacity)
-            )
-            .background(
-                RoundedRectangle(cornerRadius: cornerRadius)
-                    .stroke(
-                        LinearGradient(
-                            gradient: Gradient(colors: [
-                                Color.white.opacity(0.6),
-                                Color.white.opacity(0.1)
-                            ]),
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        ),
-                        lineWidth: 1
+                Rectangle()
+                    .fill(Color.black)
+                    .overlay(
+                        Rectangle()
+                            .stroke(Color.green, lineWidth: 1)
                     )
             )
-            .shadow(color: Color.black.opacity(0.1), radius: 10, x: 0, y: 5)
     }
 }
 
-struct GlassButton: ViewModifier {
+struct TerminalButton: ViewModifier {
     var isPressed: Bool = false
     
     func body(content: Content) -> some View {
         content
             .background(
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(.regularMaterial)
-                    .opacity(isPressed ? 0.8 : 0.6)
-            )
-            .background(
-                RoundedRectangle(cornerRadius: 12)
-                    .stroke(
-                        LinearGradient(
-                            gradient: Gradient(colors: [
-                                Color.white.opacity(0.8),
-                                Color.white.opacity(0.2)
-                            ]),
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        ),
-                        lineWidth: 1.5
+                Rectangle()
+                    .fill(isPressed ? Color.green.opacity(0.3) : Color.black)
+                    .overlay(
+                        Rectangle()
+                            .stroke(Color.green, lineWidth: 1)
                     )
             )
             .scaleEffect(isPressed ? 0.98 : 1.0)
     }
 }
 
-struct GlassTextFieldStyle: TextFieldStyle {
+struct TerminalTextFieldStyle: TextFieldStyle {
     func _body(configuration: TextField<Self._Label>) -> some View {
         configuration
-            .padding(5)
+            .font(.custom("Monaco", size: 14))
+            .foregroundColor(.green)
+            .padding(12)
+            .background(Color.black)
             .overlay(
-                RoundedRectangle(cornerRadius: 7)
-                    .stroke(.secondary.opacity(0.5), lineWidth: 1)
+                Rectangle()
+                   
+                    .stroke(Color.green, lineWidth: 1)
             )
     }
 }
 
+struct ModernTextFieldStyle: TextFieldStyle {
+    @Environment(\.colorScheme) var colorScheme
+    
+    func _body(configuration: TextField<Self._Label>) -> some View {
+        configuration
+            .font(.title)
+            .foregroundColor(Color(red: 107.0 / 255.0, green: 107.0 / 255.0, blue: 107.0 / 255.0))
+            .padding(EdgeInsets(top: 7, leading: 10, bottom: 7, trailing: 10))
+            .frame(height: 48)
+            .textFieldStyle(.plain)
+            .background(colorScheme == .dark ? .black : .white)
+            .cornerRadius(10.0)
+    }
+}
+
 extension View {
-    func glassCard(cornerRadius: CGFloat = 16, opacity: Double = 0.1) -> some View {
-        modifier(GlassCard(cornerRadius: cornerRadius, opacity: opacity))
+    func terminalCard() -> some View {
+        modifier(TerminalCard())
     }
     
-    func glassButton(isPressed: Bool = false) -> some View {
-        modifier(GlassButton(isPressed: isPressed))
+    func terminalButton(isPressed: Bool = false) -> some View {
+        modifier(TerminalButton(isPressed: isPressed))
     }
 }
 
@@ -132,60 +105,70 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            // Liquid glass background
-            LiquidGlassBackground()
+            // Terminal background
+            TerminalBackground()
             
             VStack(spacing: 20) {
+                // Terminal header
+                HStack {
+                    Text("$ link-manager")
+                        .font(.custom("Monaco", size: 16))
+                        .foregroundColor(.green)
+                        .fontWeight(.bold)
+                    Spacer()
+                    Text("◉ ◉ ◉")
+                        .font(.custom("Monaco", size: 12))
+                        .foregroundColor(.green)
+                }
+                .padding(.horizontal)
+                
                 // Add Link Form Section
                 VStack(alignment: .leading, spacing: 20) {
-                    VStack(alignment: .leading, spacing: 16) {
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text("URL")
-                                .font(.title3)
-                                .foregroundColor(.primary)
-                            TextField("Enter URL", text: $url)
-                                .textFieldStyle(GlassTextFieldStyle())
-                        }
+                    HStack(alignment: .center, spacing: 16) {
+                        Text("> URL:")
+                            .font(.custom("Monaco", size: 14))
+                            .foregroundColor(.green)
+                        TextField("", text: $url)
+                            .textFieldStyle(ModernTextFieldStyle())
+                            .frame(maxWidth: 200)
                         
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text("Name")
-                                .font(.title3)
-                                .foregroundColor(.primary)
-                            TextField("Enter link name", text: $name)
-                                .textFieldStyle(GlassTextFieldStyle())
-                        }
+                        Text("> NAME:")
+                            .font(.custom("Monaco", size: 14))
+                            .foregroundColor(.green)
+                        TextField("", text: $name)
+                            .textFieldStyle(ModernTextFieldStyle())
+                            .frame(maxWidth: 150)
                         
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text("Category")
-                                .font(.title3)
-                                .foregroundColor(.primary)
-                            TextField("Enter category", text: $category)
-                                .textFieldStyle(GlassTextFieldStyle())
-                        }
+                        Text("> CATEGORY:")
+                            .font(.custom("Monaco", size: 14))
+                            .foregroundColor(.green)
+                        TextField("", text: $category)
+                            .textFieldStyle(ModernTextFieldStyle())
+                            .frame(maxWidth: 120)
                         
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text("Description")
-                                .font(.title3)
-                                .foregroundColor(.primary)
-                            TextField("Enter description", text: $description, axis: .vertical)
-                                .textFieldStyle(GlassTextFieldStyle())
-                                .lineLimit(3...6)
-                        }
+                        Text("> DESCRIPTION:")
+                            .font(.custom("Monaco", size: 14))
+                            .foregroundColor(.green)
+                        TextField("", text: $description)
+                            .textFieldStyle(ModernTextFieldStyle())
+                            .frame(maxWidth: 150)
                         
                         Button(action: {
                             saveLink()
                         }) {
-                            HStack {
-                                Image(systemName: "plus.circle.fill")
-                                Text("Add Link")
-                                    .font(.title3)
-                                    .fontWeight(.semibold)
+                            VStack(spacing: 2) {
+                                Text("[ADD]")
+                                    .font(.custom("Monaco", size: 12))
+                                    .fontWeight(.bold)
+                                Text("LINK")
+                                    .font(.custom("Monaco", size: 10))
                             }
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 12)
+                            .foregroundColor(.green)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 6)
+                            .frame(maxWidth: 150, maxHeight: 150)
                         }
-                        .glassButton(isPressed: isAddButtonPressed)
+                        .terminalButton(isPressed: isAddButtonPressed)
                         .disabled(!isValidInput)
                         .opacity(isValidInput ? 1.0 : 0.6)
                         .onLongPressGesture(minimumDuration: 0, maximumDistance: .infinity, pressing: { pressing in
@@ -198,14 +181,17 @@ struct ContentView: View {
                     }
                     .padding()
                 }
-                .frame(minWidth: 300, maxWidth: 400)
-                .glassCard(cornerRadius: 20, opacity: 0.15)
+                .frame(maxWidth: .infinity)
+                .terminalCard()
                 
                 // Links List Section
                 VStack(alignment: .leading, spacing: 0) {
                     HStack {
-                        TextField("Search links...", text: $linkStore.searchText)
-                            .textFieldStyle(GlassTextFieldStyle())
+                        Text("$ search:")
+                            .font(.custom("Monaco", size: 14))
+                            .foregroundColor(.green)
+                        TextField("", text: $linkStore.searchText)
+                            .textFieldStyle(ModernTextFieldStyle())
                             .frame(maxWidth: 250)
                         
                         Spacer()
@@ -214,16 +200,19 @@ struct ContentView: View {
                     
                     if linkStore.filteredLinks.isEmpty {
                         VStack(spacing: 16) {
-                            Image(systemName: "link")
-                                .font(.system(size: 48))
-                                .foregroundColor(.secondary)
-                            Text("No Links")
-                                .font(.title)
-                                .fontWeight(.medium)
-                                .foregroundColor(.primary)
-                            Text(linkStore.searchText.isEmpty ? "Add your first link using the form on the left" : "No links match your search")
-                                .font(.title3)
-                                .foregroundColor(.secondary)
+                            Text("┌─────────────────┐")
+                                .font(.custom("Monaco", size: 16))
+                                .foregroundColor(.green)
+                            Text("│   NO_LINKS_FOUND   │")
+                                .font(.custom("Monaco", size: 16))
+                                .foregroundColor(.green)
+                                .fontWeight(.bold)
+                            Text("└─────────────────┘")
+                                .font(.custom("Monaco", size: 16))
+                                .foregroundColor(.green)
+                            Text(linkStore.searchText.isEmpty ? "# Execute ADD_LINK command above" : "# No matches for search query")
+                                .font(.custom("Monaco", size: 12))
+                                .foregroundColor(.green.opacity(0.7))
                                 .multilineTextAlignment(.center)
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -232,14 +221,14 @@ struct ContentView: View {
                             LazyVStack(spacing: 12) {
                                 ForEach(linkStore.filteredLinks) { link in
                                     LinkRowView(link: link)
-                                        .glassCard(cornerRadius: 12, opacity: 0.1)
+                                        .terminalCard()
                                         .onTapGesture {
                                             if let url = URL(string: link.url) {
                                                 NSWorkspace.shared.open(url)
                                             }
                                         }
                                         .contextMenu {
-                                            Button("Delete", role: .destructive) {
+                                            Button("rm -rf link", role: .destructive) {
                                                 linkStore.deleteLink(link)
                                             }
                                         }
@@ -250,7 +239,7 @@ struct ContentView: View {
                     }
                 }
                 .frame(minWidth: 400)
-                .glassCard(cornerRadius: 20, opacity: 0.1)
+                .terminalCard()
             }
             .padding()
         }
@@ -270,7 +259,7 @@ struct ContentView: View {
         !category.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
     
-    private func saveLink() {
+private func saveLink() {
         let trimmedURL = url.trimmingCharacters(in: .whitespacesAndNewlines)
         let trimmedName = name.trimmingCharacters(in: .whitespacesAndNewlines)
         let trimmedCategory = category.trimmingCharacters(in: .whitespacesAndNewlines)

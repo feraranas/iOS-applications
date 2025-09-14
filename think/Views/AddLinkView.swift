@@ -27,48 +27,48 @@ struct AddLinkView: View {
     
     var body: some View {
         ZStack {
-            // Liquid glass background
-            LiquidGlassBackground()
+            // Terminal background
+            TerminalBackground()
             
             NavigationView {
                 VStack(alignment: .leading, spacing: 20) {
-                    Text("Link Details")
-                        .font(.title2)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.primary)
+                    Text("$ add-link")
+                        .font(.custom("Monaco", size: 16))
+                        .fontWeight(.bold)
+                        .foregroundColor(.green)
                         .padding(.bottom, 10)
                     
                     VStack(alignment: .leading, spacing: 16) {
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("URL")
-                                .font(.headline)
-                                .foregroundColor(.primary)
-                            TextField("Enter URL", text: $url)
-                                .textFieldStyle(GlassTextFieldStyle())
+                            Text("> URL:")
+                                .font(.custom("Monaco", size: 14))
+                                .foregroundColor(.green)
+                            TextField("", text: $url)
+                                .textFieldStyle(ModernTextFieldStyle())
                         }
                         
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("Name")
-                                .font(.headline)
-                                .foregroundColor(.primary)
-                            TextField("Enter link name", text: $name)
-                                .textFieldStyle(GlassTextFieldStyle())
+                            Text("> NAME:")
+                                .font(.custom("Monaco", size: 14))
+                                .foregroundColor(.green)
+                            TextField("", text: $name)
+                                .textFieldStyle(ModernTextFieldStyle())
                         }
                         
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("Category")
-                                .font(.headline)
-                                .foregroundColor(.primary)
-                            TextField("Enter category", text: $category)
-                                .textFieldStyle(GlassTextFieldStyle())
+                            Text("> CATEGORY:")
+                                .font(.custom("Monaco", size: 14))
+                                .foregroundColor(.green)
+                            TextField("", text: $category)
+                                .textFieldStyle(ModernTextFieldStyle())
                         }
                         
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("Description")
-                                .font(.headline)
-                                .foregroundColor(.primary)
-                            TextField("Enter description", text: $description, axis: .vertical)
-                                .textFieldStyle(GlassTextFieldStyle())
+                            Text("> DESCRIPTION:")
+                                .font(.custom("Monaco", size: 14))
+                                .foregroundColor(.green)
+                            TextField("", text: $description, axis: .vertical)
+                                .textFieldStyle(ModernTextFieldStyle())
                                 .lineLimit(3...6)
                         }
                         
@@ -76,7 +76,7 @@ struct AddLinkView: View {
                     }
                     .padding()
                 }
-                .glassCard(cornerRadius: 20, opacity: 0.15)
+                .terminalCard()
                 .padding()
                 .navigationTitle("Add Link")
                 .toolbar {
